@@ -26,7 +26,16 @@ export class ParentComponent {
       const childElement = this.cardElements.toArray()[index];
       console.log(`Child Element ${index + 1}:`, childElement.nativeElement);
       // childElement.nativeElement.style.position = 'absolute';
-      childElement.nativeElement.style.right = '20';
+      // childElement.nativeElement.style.right = '20';
+
+      const menuElement = childElement.nativeElement.querySelector('.menu');
+      console.log(`Menu Element ${index + 1}:`, menuElement);
+
+      // Modify the styles or content of the menu element
+      if (menuElement) {
+        menuElement.style.backgroundColor = 'lightblue'; // Example style modification
+        // You can perform other modifications as needed
+      }
     });
   }
 }
