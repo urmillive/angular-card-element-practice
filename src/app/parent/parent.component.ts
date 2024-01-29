@@ -15,6 +15,22 @@ export class ParentComponent {
       name: 'lakshman',
       age: 18,
     },
+    {
+      name: 'ram',
+      age: 23,
+    },
+    {
+      name: 'lakshman',
+      age: 18,
+    },
+    {
+      name: 'ram',
+      age: 23,
+    },
+    {
+      name: 'lakshman',
+      age: 18,
+    },
   ];
 
   @ViewChildren('cardElement')
@@ -32,9 +48,28 @@ export class ParentComponent {
       console.log(`Menu Element ${index + 1}:`, menuElement);
 
       // Modify the styles or content of the menu element
+      // TODO:
+      // const contentBelow = card.nativeElement.offsetHeight > 0;
+      const nextCard = this.cardElements.toArray()[index + 1];
+      const isContentBelow =
+        nextCard &&
+        card.nativeElement.offsetTop + card.nativeElement.offsetHeight <
+          nextCard.nativeElement.offsetTop;
+
       if (menuElement) {
         menuElement.style.backgroundColor = 'lightblue'; // Example style modification
+        menuElement.style.right = 0;
+        menuElement.style.bottom = 0;
+        menuElement.style.position = 'absolute';
         // You can perform other modifications as needed
+
+        menuElement.style.backgroundColor = isContentBelow
+          ? 'crimson'
+          : 'lightblue';
+
+        menuElement.style.backgroundColor = !isContentBelow
+          ? (menuElement.style.top = 0)
+          : (menuElement.style.left = 0);
       }
     });
   }
