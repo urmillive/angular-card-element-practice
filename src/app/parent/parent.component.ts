@@ -21,7 +21,12 @@ export class ParentComponent {
   cardElements!: QueryList<ElementRef>;
   ngAfterViewInit() {
     this.cardElements.toArray().forEach((card, index) => {
-      console.log(`Card ${index + 1}:`, card.nativeElement);
+      // console.log(`Card ${index + 1}:`, card.nativeElement);
+
+      const childElement = this.cardElements.toArray()[index];
+      console.log(`Child Element ${index + 1}:`, childElement.nativeElement);
+      // childElement.nativeElement.style.position = 'absolute';
+      childElement.nativeElement.style.right = '20';
     });
   }
 }
